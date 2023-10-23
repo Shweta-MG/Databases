@@ -45,6 +45,14 @@ INSERT INTO Users (username, full_name, email, join_date) VALUES
     ('happyCoder', 'David Johnson', 'david.johnson@email.com', '2023-09-14'),
     ('tweetQueen', 'Sarah Williams', 'sarah.williams@email.com', '2023-09-15');
 
+-- Know coluns in table
+USE Tweeter;
+Show columns from Users;
+
+
+USE Tweeter;
+desc Users;
+
 
 USE Tweeter;
 select * from Users;
@@ -58,6 +66,10 @@ CREATE TABLE Tweets (
     tweet_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     favorites INT DEFAULT 0
 );
+
+-- Know coluns in table
+USE Tweeter;
+Show columns from Tweets;
 
 -- Insert sample tweet data
 USE Tweeter;
