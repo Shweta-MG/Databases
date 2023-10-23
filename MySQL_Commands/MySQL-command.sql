@@ -91,3 +91,23 @@ INSERT INTO Tweets (user_id, tweet_content) VALUES
 
 USE Tweeter;
 select * from Tweets;
+
+
+--Exercie two
+--create a pastries table
+--Inspect it
+--drop the table
+create database desert;
+
+use desert;
+create table Pastries (
+    pastries_id INT AUTO_INCREMENT PRIMARY KEY,
+    Pastries_name VARCHAR(50) NOT NULL,
+    Quanity INT NOT NULL
+);
+
+USE desert;
+desc Pastries;
+
+USE desert;
+drop table Pastries;
