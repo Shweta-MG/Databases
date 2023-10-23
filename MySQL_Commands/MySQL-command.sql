@@ -46,6 +46,7 @@ INSERT INTO Users (username, full_name, email, join_date) VALUES
     ('tweetQueen', 'Sarah Williams', 'sarah.williams@email.com', '2023-09-15');
 
 -- Know coluns in table
+-- Know or describe more about the table, so check it with this command
 USE Tweeter;
 Show columns from Users;
 
@@ -67,9 +68,18 @@ CREATE TABLE Tweets (
     favorites INT DEFAULT 0
 );
 
+--Delete or drop the table
+USE Tweeter;
+DROP TABLE Tweets
+
 -- Know coluns in table
+-- Know or describe more about the table, so check it with this command
 USE Tweeter;
 Show columns from Tweets;
+
+USE Tweeter;
+desc Tweets;
+
 
 -- Insert sample tweet data
 USE Tweeter;
