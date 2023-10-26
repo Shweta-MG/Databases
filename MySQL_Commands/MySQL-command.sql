@@ -143,7 +143,49 @@ VALUES (3, "Mario's pizza" , 'Mario', 7),
 
 
 use world;
-drop table people
+drop table people;
 
 use world;
-select * from people
+select * from people;
+
+
+use world;
+create table peopleNew (    
+    people_id INT AUTO_INCREMENT PRIMARY KEY,
+    First_name VARCHAR(50) NOT NULL  DEFAULT 'I forgot to write a name here',
+    Last_name VARCHAR(50) NOT NULL DEFAULT 'I forgot to write a name here',
+    Age INT NOT NULL DEFAULT '99');
+
+
+use world;
+insert into peopleNew ( people_id, First_name, Last_name, Age )
+VALUES (1, NULL , 'Mario', 7),
+(2, 'Shweta\'s pizza', NULL , 3);
+
+
+use world;
+select * from peopleNew;
+
+
+
+use world;
+insert into peopleNew ( people_id, First_name, Last_name, Age )
+VALUES (3, NULL , 'Mario', 7),
+(4, "Shweta's pizza", NULL, 3);
+
+
+use world;
+create table peopleNew1 (    
+    people_id INT AUTO_INCREMENT PRIMARY KEY,
+    First_name VARCHAR(50) NOT NULL  DEFAULT 'I forgot to write a name here',
+    Last_name VARCHAR(50) NOT NULL DEFAULT 'I forgot to write a name here',
+    Age INT NOT NULL DEFAULT '99');
+
+//Default values did not work. Little more investigation to be done here. 
+use world;
+insert into peopleNew1 (people_id, First_name, Last_name, Age )
+VALUES (1,  ,  , );
+
+
+use world;
+select * peopleNew1;
