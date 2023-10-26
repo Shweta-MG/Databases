@@ -248,7 +248,7 @@ VALUES
     ('Miller', 'William',  38 );
 
 Use Workplace;
-select *  from Employees
+select *  from Employees;
 
 Use Workplace;
-drop table Employees
+drop table Employees;

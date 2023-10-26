@@ -34,15 +34,6 @@ VALUES
 
 
 
---Deleting the data
-
-Use Animals;
-drop table cats
-
-
-
-Use Animals;
-drop database Animals
 
 
 -- Reading the data
@@ -73,4 +64,56 @@ select cat_id,  cat_name, cat_age from cats where cat_id = cat_age;
 Use Animals;
 select cat_id as id,  cat_name as name , cat_age as Age from cats where cat_id = cat_age;
 
---Update the data or table 
+
+
+--Update the data or table (using 'SET' here)
+
+
+show databases
+
+use Workplace;
+update Employees SET Last_name='Updated during excerise';
+
+
+use Workplace;
+select * from Employees
+
+
+use Workplace;
+update Employees SET Last_name='Adding something new', First_name='Checking it twice';
+
+use Workplace;
+update Employees SET Middle_name='Gupta' Where First_name='Anna';
+
+use Workplace;
+update Employees SET Age=12 Where First_name="William";
+
+
+
+--Deleting the data
+
+Use Animals;
+drop table cats;
+
+
+
+Use Animals;
+drop database Animals;
+ 
+
+
+Use Animals;
+Delete from cats --everything is deleted. 
+
+
+Use Animals;
+Delete from cats where cat_name="Simba";
+
+
+
+
+Use Animals;
+Delete from cats where cat_age=5;
+
+Use Animals;
+select * from cats;
