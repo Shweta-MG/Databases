@@ -39,7 +39,8 @@ CREATE TABLE Users (
 
 -- Insert sample user data
 USE Tweeter;
-INSERT INTO Users (username, full_name, email, join_date) VALUES
+INSERT INTO Users (username, full_name, email, join_date) 
+VALUES
     ('user123', 'John Doe', 'john.doe@email.com', '2023-09-10'),
     ('tweetMaster', 'Jane Smith', 'jane.smith@email.com', '2023-09-12'),
     ('happyCoder', 'David Johnson', 'david.johnson@email.com', '2023-09-14'),
@@ -53,6 +54,9 @@ Show columns from Users;
 
 USE Tweeter;
 desc Users;
+
+
+
 
 
 USE Tweeter;
@@ -111,3 +115,35 @@ desc Pastries;
 
 USE desert;
 drop table Pastries;
+
+
+
+create database world;
+
+use world;
+create table people (    
+    people_id INT AUTO_INCREMENT PRIMARY KEY,
+    First_name VARCHAR(50) NOT NULL,
+    Last_name VARCHAR(50) NOT NULL,
+    Age INT NOT NULL);
+
+use world;
+insert into people ( people_id, First_name, Last_name, Age )
+VALUES (1, 'Mario\'s pizza' , 'Mario', 7),
+(2, 'Shweta\'s pizza', 'Gupta', 3);
+
+
+use world;
+insert into people ( people_id, First_name, Last_name, Age )
+VALUES (3, "Mario's pizza" , 'Mario', 7),
+(4, "Shweta's pizza", 'Gupta', 3);
+
+""
+
+
+
+use world;
+drop table people
+
+use world;
+select * from people
