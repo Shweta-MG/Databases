@@ -195,7 +195,7 @@ select * from peopleNew1;
 
 
 
-
+--When primary key is auto increment, no need to add as column while inserting values in table. It will automatically be updated. 
 use world;
 create table peopleNew3 (    
     people_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -212,3 +212,43 @@ Values ("shweta", 4),
 
 use world;
 Select * from peopleNew3;
+
+--Exercise
+Create database Workplace
+
+Use Workplace;
+create table Employees (
+    Employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    Last_name VARCHAR(100) NOT NULL,
+    First_name VARCHAR(100) NOT NULL,
+    Middle_name VARCHAR(100),
+    Age INT, 
+    Current_status VARCHAR(100) NOT NULL DEFAULT "Employed"
+);
+
+--Make sure that to get default values, that section should not be part of the column in the insert values.
+Use Workplace;
+INSERT INTO Employees (Last_name, First_name, Middle_name, Age)
+VALUES
+    ('Smith', 'John', 'Robert', 35 ),
+    ('Johnson', 'Anna', 'Marie', 28 ),
+    ('Brown', 'Michael', 'David', 42 ),
+    ('Davis', 'Jennifer', 'Ann', 31),
+    ('Miller', 'William', 'James', 38 );
+
+
+
+Use Workplace;
+INSERT INTO Employees (Last_name, First_name, Age)
+VALUES
+    ('Smith', 'John', 35 ),
+    ('Johnson', 'Anna',  28 ),
+    ('Brown', 'Michael',  42 ),
+    ('Davis', 'Jennifer', 31),
+    ('Miller', 'William',  38 );
+
+Use Workplace;
+select *  from Employees
+
+Use Workplace;
+drop table Employees
