@@ -159,8 +159,12 @@ create table peopleNew (
 
 use world;
 insert into peopleNew ( people_id, First_name, Last_name, Age )
-VALUES (1, NULL , 'Mario', 7),
-(2, 'Shweta\'s pizza', NULL , 3);
+VALUES 
+(1, NULL , 'Mario', 7)
+
+
+use world;
+drop table peopleNew
 
 
 use world;
@@ -181,11 +185,30 @@ create table peopleNew1 (
     Last_name VARCHAR(50) NOT NULL DEFAULT 'I forgot to write a name here',
     Age INT NOT NULL DEFAULT '99');
 
-//Default values did not work. Little more investigation to be done here. 
-use world;
+
 insert into peopleNew1 (people_id, First_name, Last_name, Age )
 VALUES (1,  ,  , );
 
 
 use world;
-select * peopleNew1;
+select * from peopleNew1;
+
+
+
+
+use world;
+create table peopleNew3 (    
+    people_id INT AUTO_INCREMENT PRIMARY KEY,
+    First_name VARCHAR(50) NOT NULL,
+    Age INT NOT NULL);
+
+use world;
+insert into peopleNew3 (First_name, Age) 
+Values ("shweta", 4),
+("Mridul", 3),
+("Tanu", 5),
+("Gunnu", 7)
+
+
+use world;
+Select * from peopleNew3;
