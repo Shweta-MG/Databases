@@ -568,3 +568,53 @@ from
 	books
 Where
 	author_fname like '____';
+
+--Exercises
+--longest book
+use Library;
+
+select
+	title,
+	pages
+from
+	books
+order by
+	pages desc
+limit
+	1;
+
+--summary of title and release year of three most recent books
+use Library;
+
+select
+	concat_ws(' ', title, '_', released_year) as summary
+from
+	books
+order by
+	released_year desc
+limit
+	3;
+
+--All books author contains space
+use Library;
+select title, author_lname from books Where author_lname like '% %';
+
+--3 books with lowest stock
+use Library;
+select title, released_year, stock_quantity from books order by stock_quantity asc limit 3;
+
+--title and author last name first shorted by author-lastname then by title
+use Library;
+select title, author_lname from books order by author_lname, title;
+
+--
+use Library;
+select  concat_ws (' ' , ucase('My favorite author is '), ucase(author_fname), ucase(author_lname), '!!') as yell from books order by author_lname
+
+
+use Library;
+select upper(concat_ws(' ', 'My favorite author is', author_fname, author_lname, '!!!'))from books order by author_lname;
+
+
+
+
