@@ -13,6 +13,7 @@ CREATE TABLE books (
 	PRIMARY KEY(book_id)
 );
 
+--Inserting values into table
 use Library;
 
 INSERT INTO
@@ -119,6 +120,7 @@ VALUES
 		343
 	);
 
+--Checking the table
 use Library;
 
 select
@@ -126,6 +128,7 @@ select
 from
 	books;
 
+--Describing the table
 use Library;
 
 DESC books;
@@ -342,12 +345,226 @@ select
 from
 	books;
 
---short title with 10 character+..., auther name and quantity og book
+--short title with 10 character+..., author name and quantity og book
 use Library;
+
 select
 	concat(substring(title, 1, 10), '...') as Short_title,
 	concat(author_lname, ', ', author_fname) as Author,
 	concat_ws(' ', stock_quantity, 'in stock') as quantity
 from
-	books
+	books --
+	use Library;
 
+INSERT INTO
+	books (
+		title,
+		author_fname,
+		author_lname,
+		released_year,
+		stock_quantity,
+		pages
+	)
+VALUES
+	('10% Happier', 'Dan', 'Harris', 2014, 29, 256),
+	('fake_book', 'Freida', 'Harris', 2001, 287, 428),
+	(
+		'Lincoln In The Bardo',
+		'George',
+		'Saunders',
+		2017,
+		1000,
+		367
+	);
+
+use Library;
+
+select
+	*
+from
+	books;
+
+--
+use Library;
+
+select
+	*
+from
+	books;
+
+use Library;
+
+select
+	distinct released_year
+from
+	books;
+
+--DISTINCT full name of author 
+use Library;
+
+select
+	DISTINCT concat(author_fname, ' ', author_lname)
+from
+	books;
+
+-- distinct
+use Library;
+
+select
+	DISTINCT author_fname,
+	author_lname
+from
+	books;
+
+--orderby 
+use Library;
+
+select
+	book_id,
+	author_fname,
+	author_lname,
+	released_year
+from
+	books
+order by
+	released_year;
+
+use Library;
+
+select
+	book_id,
+	author_fname,
+	author_lname,
+	released_year
+from
+	books
+order by
+	author_fname DESC;
+
+use Library;
+
+select
+	book_id,
+	author_fname,
+	author_lname,
+	released_year
+from
+	books
+order by
+	author_fname asc;
+
+use Library;
+
+select
+	book_id,
+	author_fname,
+	released_year,
+	pages
+from
+	books
+order by
+	pages;
+
+-- a number after orderby represent the number of column and then ordered the table according to that
+use Library;
+
+select
+	book_id,
+	author_fname,
+	released_year,
+	pages
+from
+	books
+order by
+	4 DESC;
+
+--Orderby newly generated column
+use Library;
+
+select
+	concat_ws (' ', author_fname, author_lname) as Full_name
+from
+	books
+order by
+	Full_name asc;
+
+--Limit the display results
+use Library;
+
+select
+	DISTINCT concat_ws (' ', author_fname, author_lname) as Full_name
+from
+	books
+order by
+	Full_name asc
+limit
+	5;
+
+--Limited results shown from 2nd to 5th results.
+use Library;
+
+select
+	DISTINCT concat_ws (' ', author_fname, author_lname) as Full_name
+from
+	books
+order by
+	Full_name asc
+limit
+	2, 5;
+
+--Searching characters 
+--'%' sign means that characters is part of string..more can be accepted. '0 ' or more characters 
+use Library;
+
+select
+	title,
+	author_fname,
+	author_lname
+from
+	books
+Where
+	author_fname like '%J%';
+
+use Library;
+
+select
+	title,
+	concat_ws(' ', author_fname, author_lname) as Author
+from
+	books
+Where
+	title like '%J%';
+
+-- First letter is 'J'
+use Library;
+
+select
+	title,
+	concat_ws(' ', author_fname, author_lname) as Author
+from
+	books
+Where
+	author_fname like 'J%';
+
+--last letter is 'e'
+use Library;
+
+select
+	title,
+	concat_ws(' ', author_fname, author_lname) as Author
+from
+	books
+Where
+	author_lname like '%e';
+
+-- '-' means one characters four '_' means four characters
+use Library;
+
+select
+	title,
+	author_fname,
+	author_lname
+from
+	books
+Where
+	author_fname like '____';
