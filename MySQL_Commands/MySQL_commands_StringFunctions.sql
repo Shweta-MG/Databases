@@ -177,7 +177,7 @@ select
 from
 	books;
 
--- concat string while using sbustring 
+-- concat string while using substring 
 use Library;
 
 select
@@ -276,6 +276,8 @@ select
 	concat_ws(' ', title, upper(author_fname), '!!!!!')
 from
 	books;
+
+	
 
 --Insert a string into some other string
 use Library;
@@ -597,24 +599,71 @@ limit
 
 --All books author contains space
 use Library;
-select title, author_lname from books Where author_lname like '% %';
+
+select
+	title,
+	author_lname
+from
+	books
+Where
+	author_lname like '% %';
 
 --3 books with lowest stock
 use Library;
-select title, released_year, stock_quantity from books order by stock_quantity asc limit 3;
 
---title and author last name first shorted by author-lastname then by title
+select
+	title,
+	released_year,
+	stock_quantity
+from
+	books
+order by
+	stock_quantity asc
+limit
+	3;
+
+--title and author last name first shorted by author-last name then by title
 use Library;
-select title, author_lname from books order by author_lname, title;
+
+select
+	title,
+	author_lname
+from
+	books
+order by
+	author_lname,
+	title;
 
 --
 use Library;
-select  concat_ws (' ' , ucase('My favorite author is '), ucase(author_fname), ucase(author_lname), '!!') as yell from books order by author_lname
 
+select
+	concat_ws (
+		' ',
+		ucase('My favorite author is '),
+		ucase(author_fname),
+		ucase(author_lname),
+		'!!'
+	) as yell
+from
+	books
+order by
+	author_lname use Library;
 
+--
 use Library;
-select upper(concat_ws(' ', 'My favorite author is', author_fname, author_lname, '!!!'))from books order by author_lname;
 
-
-
-
+select
+	upper(
+		concat_ws(
+			' ',
+			'My favorite author is',
+			author_fname,
+			author_lname,
+			'!!!'
+		)
+	)
+from
+	books
+order by
+	author_lname;
