@@ -667,3 +667,33 @@ from
 	books
 order by
 	author_lname;
+
+
+--add more entries
+
+use Library;
+INSERT INTO books (title, author_fname, author_lname, released_year, stock_quantity, pages)
+VALUES
+    ('The Art of Programming', 'John', 'Doe', 2020, 10, 250),
+    ('Historical Adventures', 'Jane', 'Smith', 2018, 5, 320),
+    ('The Art of Programming', 'John', 'Doe', 2020, 10, 250),
+    ('Mystery of the Lost Civilization', 'Robert', 'Johnson', 2017, 8, 280),
+    ('Science Explorations', 'Mary', 'Wilson', 2019, 6, 200),
+    ('The Art of Programming', 'John', 'Doe', 2020, 10, 250),
+    ('Historical Adventures', 'Jane', 'Smith', 2018, 5, 320),
+    ('Epic Fantasy Quest', 'David', 'Brown', 2021, 12, 420),
+    ('Mysteries of the Universe', 'Laura', 'Davis', 2019, 7, 280),
+    ('Programming in Practice', 'John', 'Doe', 2016, 9, 320),
+    ('Historical Adventures', 'Jane', 'Smith', 2018, 5, 320),
+    ('The Art of Programming', 'John', 'Doe', 2020, 10, 250),
+    ('Epic Fantasy Quest', 'David', 'Brown', 2021, 12, 420),
+    ('Mysteries of the Universe', 'Laura', 'Davis', 2019, 7, 280),
+    ('Science Explorations', 'Mary', 'Wilson', 2019, 6, 200),
+    ('Programming in Practice', 'John', 'Doe', 2016, 9, 320),
+    ('Epic Fantasy Quest', 'David', 'Brown', 2021, 12, 420),
+    ('Science Explorations', 'Mary', 'Wilson', 2019, 6, 200),
+    ('Historical Adventures', 'Jane', 'Smith', 2018, 5, 320);
+
+
+use Library;
+select * from books;
