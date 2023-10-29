@@ -99,9 +99,9 @@ use World;
 INSERT INTO
     people (name, birth_date, birth_time, birth_date_time)
 VALUES
-    ('Johney Chris', curdate(), curtime(), now()),
+    ('Johnny Chris', curdate(), curtime(), now()),
     (
-        'Johney Chris Jr.',
+        'Johnny Chris Jr.',
         curdate(),
         curtime(),
         current_timestamp()
@@ -154,16 +154,78 @@ from
     people;
 
 --Formatting date and time
---%a, etc take it form documtation on mySQL
+--%a, etc take it form documentation on mySQL
 --https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_date-format
+use World;
+
+select
+    concat_ws(
+        ' ',
+        monthname(birth_date_time),
+        day(birth_date_time),
+        year(birth_date_time)
+    )
+from
+    people;
 
 use World;
-select concat_ws(' ', monthname(birth_date_time), day(birth_date_time), year(birth_date_time)) from people;
 
+select
+    date_format(birth_date, '%a %b %c %W')
+from
+    people;
 
 use World;
-select date_format(birth_date, '%a %b %c %W') from people;
 
+select
+    name,
+    date_format(birth_date_time, 'Born on: %r')
+from
+    people;
+
+--Date math calculation 
+--https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_datediff
+use World;
+
+select
+    name,
+    birth_date,
+    datediff(curdate(), birth_date)
+from
+    people;
 
 use World;
-select name, date_format(birth_date_time, 'Born on: %r') from people;
+
+select
+    name,
+    birth_date_time,
+    datediff(curdate(), birth_date_time)
+from
+    people;
+
+use World;
+
+select
+    name,
+    date_add(curdate(), interval 1 year)
+from
+    people;
+
+use World;
+
+select
+    name,
+    date_add(birth_date, interval 1 year)
+from
+    people;
+
+use World;
+
+select
+    name,
+    date_sub(birth_date, interval 1 year)
+from
+    people;
+
+
+
