@@ -229,3 +229,83 @@ from
 
 
 
+--Timestamps
+select Timestamps();
+
+show databases;
+
+use Tweeter;
+create table Comments (
+    comment_id int AUTO_INCREMENT PRIMARY key,
+    text varchar(250),
+    create_at Timestamp default current_timestamp
+); 
+
+use Tweeter;
+INSERT into Comments(text) VALUES(
+'TExt 1'
+)
+
+
+use Tweeter;
+INSERT into Comments(text) VALUES(
+'Text 2'
+)
+
+
+use Tweeter;
+INSERT into Comments(text) VALUES(
+'Beautiful sunset'
+)
+
+use Tweeter;
+select * from Comments;
+
+use Tweeter;
+CREATE TABLE Comments1 (
+    comment_id INT AUTO_INCREMENT PRIMARY KEY,
+    text VARCHAR(250),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+use Tweeter;
+INSERT into Comments1(text) VALUES ('SQL is in learning')
+
+use Tweeter;
+UPDATE Comments1 set text='SQL is in learning!!!!!' where text='SQL is in learning'
+
+
+use Tweeter;
+INSERT into Comments1(text) VALUES ('SQL timestamp is in learning')
+
+use Tweeter;
+UPDATE Comments1 set text='SQL timestamp is in learning!!!' where text='SQL timestamp is in learning';
+
+use Tweeter;
+select * from Comments1;
+
+--Exercise
+--Print current time
+select curtime();
+
+--print current date
+select curdate();
+
+--print current day of week as number
+select weekday(curdate());
+
+SELECT DAYOFWEEK(CURDATE());
+SELECT DAYOFWEEK(NOW());
+SELECT DATE_FORMAT(NOW(), '%w') + 1;
+
+--print name of the day of week
+select dayname(curdate());
+
+SELECT DATE_FORMAT(NOW(), '%W');
+
+--print current date and time
+SELECT DATE_FORMAT(CURDATE(), '%m/%d/%Y');
+ 
+SELECT DATE_FORMAT(NOW(), '%M %D at %h:%i');
