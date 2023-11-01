@@ -1,12 +1,13 @@
 Show databases;
+
 Create database Business;
 
-drop database Business
+drop database Business use Business;
 
-use Business;
 drop table Customers;
 
 use Business;
+
 CREATE TABLE Customers (
     id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
@@ -15,8 +16,8 @@ CREATE TABLE Customers (
     phone VARCHAR(200) NOT NULL
 );
 
-
 use Business;
+
 CREATE TABLE orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
     date VARCHAR(100) NOT NULL,
@@ -25,40 +26,133 @@ CREATE TABLE orders (
     FOREIGN KEY (customer_id) REFERENCES Customers(id)
 );
 
-
 use Business;
-INSERT INTO Customers (first_name, last_name, email, phone)
+
+INSERT INTO
+    Customers (first_name, last_name, email, phone)
 VALUES
     ('John', 'Doe', 'john.doe@example.com', '4567890'),
-    ('Jane', 'Smith', 'jane.smith@example.com', '6543210'),
-    ('Robert', 'Johnson', 'robert.j@example.com', '5555555'),
-    ('Mary', 'Wilson', 'mary.w@example.com', '8888888'),
-    ('David', 'Brown', 'david.b@example.com', '7777777'),
-    ('Sarah', 'Williams', 'sarah.w@example.com', '1234567'),
-    ('Michael', 'Anderson', 'michael.a@example.com', '9876543'),
-    ('Emily', 'Taylor', 'emily.t@example.com', '2223333'),
-    ('Christopher', 'Lee', 'chris.l@example.com', '8887777'),
-    ('Laura', 'Harris', 'laura.h@example.com', '4443333'),
-    ('Daniel', 'Martin', 'daniel.m@example.com', '5553333'),
-    ('Jessica', 'Wilson', 'jessica.w@example.com', '3331111'),
-    ('William', 'White', 'william.w@example.com', '9998888'),
-    ('Amanda', 'Clark', 'amanda.c@example.com', '7779999'),
-    ('Matthew', 'Thomas', 'matthew.t@example.com', '6662222'),
-    ('Elizabeth', 'Brown', 'elizabeth.b@example.com', '9337777'),
-    ('James', 'Hall', 'james.h@example.com', '2444666'),
-    ('Ashley', 'Moore', 'ashley.m@example.com', '1115555'),
-    ('John', 'Taylor', 'john.t@example.com', '3221111');
+    (
+        'Jane',
+        'Smith',
+        'jane.smith@example.com',
+        '6543210'
+    ),
+    (
+        'Robert',
+        'Johnson',
+        'robert.j@example.com',
+        '5555555'
+    ),
+    (
+        'Mary',
+        'Wilson',
+        'mary.w@example.com',
+        '8888888'
+    ),
+    (
+        'David',
+        'Brown',
+        'david.b@example.com',
+        '7777777'
+    ),
+    (
+        'Sarah',
+        'Williams',
+        'sarah.w@example.com',
+        '1234567'
+    ),
+    (
+        'Michael',
+        'Anderson',
+        'michael.a@example.com',
+        '9876543'
+    ),
+    (
+        'Emily',
+        'Taylor',
+        'emily.t@example.com',
+        '2223333'
+    ),
+    (
+        'Christopher',
+        'Lee',
+        'chris.l@example.com',
+        '8887777'
+    ),
+    (
+        'Laura',
+        'Harris',
+        'laura.h@example.com',
+        '4443333'
+    ),
+    (
+        'Daniel',
+        'Martin',
+        'daniel.m@example.com',
+        '5553333'
+    ),
+    (
+        'Jessica',
+        'Wilson',
+        'jessica.w@example.com',
+        '3331111'
+    ),
+    (
+        'William',
+        'White',
+        'william.w@example.com',
+        '9998888'
+    ),
+    (
+        'Amanda',
+        'Clark',
+        'amanda.c@example.com',
+        '7779999'
+    ),
+    (
+        'Matthew',
+        'Thomas',
+        'matthew.t@example.com',
+        '6662222'
+    ),
+    (
+        'Elizabeth',
+        'Brown',
+        'elizabeth.b@example.com',
+        '9337777'
+    ),
+    (
+        'James',
+        'Hall',
+        'james.h@example.com',
+        '2444666'
+    ),
+    (
+        'Ashley',
+        'Moore',
+        'ashley.m@example.com',
+        '1115555'
+    ),
+    (
+        'John',
+        'Taylor',
+        'john.t@example.com',
+        '3221111'
+    );
 
+use Business;
 
+select
+    *
+from
+    Customers;
 
-    use Business;
-    select * from Customers;
+-- Insert orders data
+use Business;
 
-
-
-    -- Insert orders data
-    use Business;
-INSERT INTO orders (date, price, customer_id)
+INSERT INTO
+    orders (date, price, customer_id)
 VALUES
     ('2023-10-01', '150.00', 1),
     ('2023-10-02', '200.00', 2),
@@ -81,15 +175,61 @@ VALUES
     ('2023-10-19', '75.50', 19),
     ('2023-10-20', '200.00', 19);
 
-    use Business;
-    select * from orders;
+use Business;
 
-    use Business;
-    select * from Customers join orders on Customers.id= orders.customer_id
-
-    use Business;
-    select first_name, last_name, date, price from Customers join orders on orders.customer_id = Customers.id
-
+select
+    *
+from
+    orders;
 
 use Business;
-select * from orders join Customers on Customers.id = orders.customer_id
+
+select
+    *
+from
+    Customers
+    join orders on Customers.id = orders.customer_id use Business;
+
+select
+    first_name,
+    last_name,
+    date,
+    price
+from
+    Customers
+    join orders on orders.customer_id = Customers.id 
+    
+    
+--checking the sequence effect    
+    use Business;
+
+select
+    *
+from
+    orders
+    join Customers on Customers.id = orders.customer_id 
+
+
+
+
+--Sum the amount spent on the business   
+    use Business;
+
+select
+    first_name,
+    last_name,
+    sum(price) as total
+from
+    Customers
+    join orders on Customers.id = orders.customer_id
+group by
+    first_name,
+    last_name
+order by
+    total desc
+
+
+
+    --left join
+    use Business;
+    select first_name, last_name, price from Customers left join orders on orders.customer_id = Customers.id
