@@ -197,22 +197,14 @@ select
     price
 from
     Customers
-    join orders on orders.customer_id = Customers.id 
-    
-    
---checking the sequence effect    
+    join orders on orders.customer_id = Customers.id --checking the sequence effect    
     use Business;
 
 select
     *
 from
     orders
-    join Customers on Customers.id = orders.customer_id 
-
-
-
-
---Sum the amount spent on the business   
+    join Customers on Customers.id = orders.customer_id --Sum the amount spent on the business   
     use Business;
 
 select
@@ -226,10 +218,133 @@ group by
     first_name,
     last_name
 order by
-    total desc
-
-
-
-    --left join
+    total desc --left join
     use Business;
-    select first_name, last_name, price from Customers left join orders on orders.customer_id = Customers.id
+
+select
+    first_name,
+    last_name,
+    price
+from
+    Customers
+    left join orders on orders.customer_id = Customers.id drop database school create database school;
+
+use school;
+
+create table students (
+    id int AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100)
+) use school;
+
+create table papers (
+    id int AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) not NULL,
+    grade int(100) not NULL,
+    student_id int (10) not NULL,
+    FOREIGN KEY (student_id) REFERENCES students(id)
+) use school;
+
+INSERT INTO
+    students (first_name)
+VALUES
+    ('Caleb'),
+    ('Samantha'),
+    ('Raj'),
+    ('Carlos'),
+    ('Lisa');
+
+use school;
+
+INSERT INTO
+    papers (student_id, title, grade)
+VALUES
+    (1, 'My First Book Report', 60),
+    (1, 'My Second Book Report', 75),
+    (2, 'Russian Lit Through The Ages', 94),
+    (2, 'De Montaigne and The Art of The Essay', 98),
+    (4, 'Borges and Magical Realism', 89);
+
+use school;
+
+select
+    first_name,
+    title,
+    grade
+from
+    papers
+    inner join students on students.id = papers.student_id
+order by
+    grade desc;
+
+use school;
+
+select
+    first_name,
+    title,
+    grade
+from
+    students
+    left join papers on students.id = papers.student_id;
+
+use school;
+
+select
+    first_name,
+    ifnull(title, 'Missing'),
+    ifnull(grade, 0) as Grades
+from
+    students
+    left join papers on students.id = papers.student_id;
+
+use school;
+
+select
+    first_name,
+    ifnull(avg(grade), 0) as grade
+from
+    students
+    left join papers on students.id = papers.student_id
+group by
+    first_name
+order by
+    grade desc;
+
+use Library;
+
+select
+    author_fname,
+    author_lname,
+    title,
+    pages,
+    CASE
+        WHEN pages BETWEEN 0
+        AND 100 THEN 'Small story book'
+        WHEN pages BETWEEN 101
+        AND 200 THEN 'One night long book'
+        WHEN pages BETWEEN 201
+        AND 300 THEN 'A really long book'
+        ELSE 'A really really really long book '
+    END AS Summary
+from
+    books
+order by
+    pages;
+
+use school;
+
+select
+    first_name,
+    ifnull(avg(grade), 0) as grade,
+    CASE
+        WHEN ifnull(avg(grade), 0) <= 75 then 'PASSING'
+        ELSE 'FAILING'
+    END as Passing_status
+from
+    students
+    left join papers on students.id = papers.student_id
+group by
+    first_name
+order by
+    grade desc;
+
+
