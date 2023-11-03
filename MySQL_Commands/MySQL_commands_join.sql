@@ -599,3 +599,8 @@ GROUP BY
 --if statement
 use tv_db;
 select concat(first_name, ' ', last_name) as Reviewer_Name, count(rating) as Rating, IFNULL(MIN(rating), 0) as Max, IFNULL(MAX(rating), 0), IFNULL(ROUND(AVG(rating)), 4) as Avg, if(count(rating) > 0, 'Active', 'Inactive') as Status from Reviewers left join Reviews on Reviewers.id = Reviews.Reviewer_id GROUP by Reviewer_Name order by Rating;
+
+--title , rating, reviewer
+ use tv_db;
+ select title, rating, concat(first_name, ' ', last_name) as name from Reviews join Series on Series.id = Reviews.Series_id
+ join Reviewers on Reviewers.id = Reviews.Reviewer_id order by rating;
