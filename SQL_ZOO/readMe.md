@@ -1,4 +1,4 @@
-<h1 align="center"> SQL Practice with SQLZoo </h1>
+<h1 align="left"> SQL Practice with SQLZoo </h1>
 
 <h2 align="center"> Overview </h2>
 
