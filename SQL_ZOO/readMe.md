@@ -9,6 +9,14 @@
 ## 🚀 Getting Started
 
 1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/your-username/sql-practice-sqlzoo.git
-   cd sql-practice-sqlzoo
+2. **Explore the Excercises:**
+   Navigate to the SQLZoo website to find the SQL exercises.
+   Use the exercises as a guide for the problems you want to solve. Solutions:
+4. **Solutions:**
+  Each exercise solution is organized in its own SQL file (e.g., exercise1.sql).
+  The solutions directory contains my solutions for each exercise.
+  Notes:
+
+The notes directory includes additional notes, observations, or explanations related to specific exercises.
+## 📚 Resources
+SQLZoo: SQLZoo website for interactive SQL exercises and tutorials.
